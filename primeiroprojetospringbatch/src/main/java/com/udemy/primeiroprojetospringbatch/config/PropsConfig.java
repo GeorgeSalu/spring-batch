@@ -9,7 +9,7 @@ import org.springframework.core.io.FileSystemResource;
 public class PropsConfig {
 
 	@Bean
-	public PropertySourcesPlaceholderConfigurer config() {
+	public PropertySourcesPlaceholderConfigurer configData() {
 		PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
 		configurer.setLocation(new FileSystemResource("/etc/config/primeirojobspringbatch/application.properties"));
 		return configurer;
