@@ -1,4 +1,4 @@
-package com.udemy.primeiroprojetospringbatch;
+package com.udemy.parimparjob;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
