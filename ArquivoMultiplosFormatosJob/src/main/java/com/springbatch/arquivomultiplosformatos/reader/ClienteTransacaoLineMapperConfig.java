@@ -17,6 +17,7 @@ import com.springbatch.arquivomultiplosformatos.dominio.Transacao;
 @Configuration
 public class ClienteTransacaoLineMapperConfig {
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Bean
 	public PatternMatchingCompositeLineMapper lineMapper() {
 		PatternMatchingCompositeLineMapper lineMapper = new PatternMatchingCompositeLineMapper<>();
@@ -25,6 +26,7 @@ public class ClienteTransacaoLineMapperConfig {
 		return lineMapper;
 	}
 
+	@SuppressWarnings({ "rawtypes" })
 	private Map<String, FieldSetMapper> fieldSetMappers() {
 		Map<String, FieldSetMapper> fieldSetMapper = new HashMap<>();
 		fieldSetMapper.put("0*", fielSetMapper(Cliente.class));
@@ -32,6 +34,7 @@ public class ClienteTransacaoLineMapperConfig {
 		return fieldSetMapper;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private FieldSetMapper fielSetMapper(Class classe) {
 		BeanWrapperFieldSetMapper fieldSetMapper = new BeanWrapperFieldSetMapper<>();
 		fieldSetMapper.setTargetType(classe);
