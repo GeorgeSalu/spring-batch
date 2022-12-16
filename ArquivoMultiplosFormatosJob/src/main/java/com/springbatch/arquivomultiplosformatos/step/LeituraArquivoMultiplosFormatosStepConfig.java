@@ -15,6 +15,7 @@ public class LeituraArquivoMultiplosFormatosStepConfig {
 	@Autowired
 	public StepBuilderFactory stepBuilderFactory;
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Bean
 	public Step leituraArquivoMultiplosFormatosStep(
 			FlatFileItemReader leituraArquivoMultiplosFormatosReader,
