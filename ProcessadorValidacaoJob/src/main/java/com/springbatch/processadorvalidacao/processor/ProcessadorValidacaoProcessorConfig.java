@@ -4,6 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.batch.item.support.builder.CompositeItemProcessorBuilder;
+import org.springframework.batch.item.validator.BeanValidatingItemProcessor;
 import org.springframework.batch.item.validator.ValidatingItemProcessor;
 import org.springframework.batch.item.validator.ValidationException;
 import org.springframework.batch.item.validator.Validator;
@@ -17,9 +19,20 @@ public class ProcessadorValidacaoProcessorConfig {
 	private Set<String> emails = new HashSet<>();
 	
 	@Bean
-	public ItemProcessor<Cliente, Cliente> procesadorValidacaoProcessor() {
-//		BeanValidatingItemProcessor<Cliente> processor = new BeanValidatingItemProcessor<>();
-//		processor.setFilter(true);
+	public ItemProcessor<Cliente, Cliente> procesadorValidacaoProcessor() throws Exception {
+		return new CompositeItemProcessorBuilder<Cliente, Cliente>()
+					.delegates(beanValidationProcessor(), emailValidationProcessor())
+					.build();
+	}
+	
+	private BeanValidatingItemProcessor<Cliente> beanValidationProcessor() throws Exception {
+		BeanValidatingItemProcessor<Cliente> processor = new BeanValidatingItemProcessor<>();
+		processor.setFilter(true);
+		processor.afterPropertiesSet();
+		return processor;
+	}
+	
+	private ValidatingItemProcessor<Cliente> emailValidationProcessor() {
 		ValidatingItemProcessor<Cliente> processor = new ValidatingItemProcessor<>();
 		processor.setValidator(validator());
 		processor.setFilter(true);
