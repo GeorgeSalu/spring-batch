@@ -52,11 +52,6 @@ public class DemonstrativoOrcamentarioWriterConfig {
 			}
 		};
 	}
-	
-	private FlatFileFooterCallback rodapeCallback() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	private LineAggregator<GrupoLancamento> lineAggregator() {
 		return new LineAggregator<GrupoLancamento>() {
