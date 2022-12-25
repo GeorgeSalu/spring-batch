@@ -7,10 +7,12 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.springframework.batch.core.configuration.annotation.StepScope;
-import org.springframework.batch.item.file.FlatFileFooterCallback;
 import org.springframework.batch.item.file.FlatFileHeaderCallback;
 import org.springframework.batch.item.file.FlatFileItemWriter;
+import org.springframework.batch.item.file.MultiResourceItemWriter;
+import org.springframework.batch.item.file.ResourceSuffixCreator;
 import org.springframework.batch.item.file.builder.FlatFileItemWriterBuilder;
+import org.springframework.batch.item.file.builder.MultiResourceItemWriterBuilder;
 import org.springframework.batch.item.file.transform.LineAggregator;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +25,32 @@ import com.springbatch.demonstrativoorcamentario.dominio.Lancamento;
 @Configuration
 public class DemonstrativoOrcamentarioWriterConfig {
 	
+	@Bean
+	@StepScope
+	public MultiResourceItemWriter<GrupoLancamento> multiDemonstrativoOrcamentarioWriter(
+			@Value("#{jobParameters['demonstrativosOrcamentarios']}") Resource demonstrativosOrcamentarios,
+			FlatFileItemWriter<GrupoLancamento> demonstrativoOrcamentarioWriter) {
+		return new MultiResourceItemWriterBuilder<GrupoLancamento>()
+				.name("multiDemonstrativoOrcamentarioWriter")
+				.resource(demonstrativosOrcamentarios)
+				.delegate(demonstrativoOrcamentarioWriter)
+				.resourceSuffixCreator(suffixCreator())
+				.itemCountLimitPerResource(1)
+				.build();
+	}
+	
+	
+	private ResourceSuffixCreator suffixCreator() {
+		return new ResourceSuffixCreator() {
+			
+			@Override
+			public String getSuffix(int index) {
+				return index + ".txt";
+			}
+		};
+	}
+
+
 	@StepScope
 	@Bean
 	public FlatFileItemWriter<GrupoLancamento> demonstrativoOrcamentarioWriter(
