@@ -1,8 +1,8 @@
 package com.springbatch.migracaodados.writer;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Date;
 
 import javax.sql.DataSource;
 
@@ -17,15 +17,14 @@ import com.springbatch.migracaodados.dominio.Pessoa;
 
 @Configuration
 public class BancoPessoaWriterConfig {
-
 	@Bean
 	public JdbcBatchItemWriter<Pessoa> bancoPessoaWriter(
 			@Qualifier("appDataSource") DataSource dataSource) {
 		return new JdbcBatchItemWriterBuilder<Pessoa>()
-					.dataSource(dataSource)
-					.sql("insert into pessoa (id, nome, email, data_nascimento, idade) values (?, ?, ?, ?, ?) ")
-					.itemPreparedStatementSetter(itemPreparedStatementSetter())
-					.build();
+				.dataSource(dataSource)
+				.sql("INSERT INTO pessoa (id, nome, email, data_nascimento, idade) VALUES (?, ?, ?, ?, ?)")
+				.itemPreparedStatementSetter(itemPreparedStatementSetter())
+				.build();
 	}
 
 	private ItemPreparedStatementSetter<Pessoa> itemPreparedStatementSetter() {
@@ -34,12 +33,14 @@ public class BancoPessoaWriterConfig {
 			@Override
 			public void setValues(Pessoa pessoa, PreparedStatement ps) throws SQLException {
 				ps.setInt(1, pessoa.getId());
-				ps.setString(2,  pessoa.getNome());
+				ps.setString(2, pessoa.getNome());
 				ps.setString(3, pessoa.getEmail());
-				ps.setDate(4, (java.sql.Date) new Date(pessoa.getDataNascimento().getTime()));
+				ps.setDate(4, new Date(pessoa.getDataNascimento().getTime()));
 				ps.setInt(5, pessoa.getIdade());
 			}
+			
 		};
 	}
+	
 	
 }
