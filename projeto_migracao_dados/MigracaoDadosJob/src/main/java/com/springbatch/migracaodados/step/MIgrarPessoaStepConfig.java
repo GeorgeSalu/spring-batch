@@ -1,4 +1,5 @@
-package com.springbatch.migracaodados.setp;
+package com.springbatch.migracaodados.step;
+
 
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
@@ -8,24 +9,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.springbatch.migracaodados.dominio.DadosBancarios;
+import com.springbatch.migracaodados.dominio.Pessoa;
 
 @Configuration
-public class MIgrarDadosBancariosStepConfig {
+public class MIgrarPessoaStepConfig {
 
 	@Autowired
 	private StepBuilderFactory stepBuilderFactory;
 	
 	@Bean
-	public Step migrarDadosBancariosStep(
-			ItemReader<DadosBancarios> arquivoDadosBancariosReader,
-			ItemWriter<DadosBancarios> bancoDadosBancariosWriter) {
+	public Step migrarPessoaStep(
+			ItemReader<Pessoa> arquivoPessoaReader,
+			ItemWriter<Pessoa> bancoPessoaWriter) {
 		return stepBuilderFactory
 					.get("migrarPessoaStep")
-					.<DadosBancarios, DadosBancarios>chunk(1)
-					.reader(arquivoDadosBancariosReader)
-					.writer(bancoDadosBancariosWriter)
+					.<Pessoa, Pessoa>chunk(1)
+					.reader(arquivoPessoaReader)
+					.writer(bancoPessoaWriter)
 					.build();
 	}
-	
 }
