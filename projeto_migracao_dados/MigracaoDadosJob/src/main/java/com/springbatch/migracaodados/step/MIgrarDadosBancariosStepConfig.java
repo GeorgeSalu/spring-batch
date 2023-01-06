@@ -22,7 +22,7 @@ public class MIgrarDadosBancariosStepConfig {
 			ItemWriter<DadosBancarios> bancoDadosBancariosWriter) {
 		return stepBuilderFactory
 					.get("migrarPessoaStep")
-					.<DadosBancarios, DadosBancarios>chunk(1)
+					.<DadosBancarios, DadosBancarios>chunk(100)
 					.reader(arquivoDadosBancariosReader)
 					.writer(bancoDadosBancariosWriter)
 					.build();
