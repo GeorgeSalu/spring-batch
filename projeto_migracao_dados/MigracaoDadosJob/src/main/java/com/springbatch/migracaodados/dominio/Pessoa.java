@@ -2,6 +2,8 @@ package com.springbatch.migracaodados.dominio;
 
 import java.util.Date;
 
+import org.apache.logging.log4j.util.Strings;
+
 public class Pessoa {
 	private int id;
 	private String nome;
@@ -49,10 +51,8 @@ public class Pessoa {
 		this.idade = idade;
 	}
 
-	@Override
-	public String toString() {
-		return "Pessoa [id=" + id + ", nome=" + nome + ", email=" + email + ", dataNascimento=" + dataNascimento
-				+ ", idade=" + idade + "]";
+	public boolean isValida() {
+		return !Strings.isBlank(nome) && !Strings.isBlank(email) && dataNascimento != null;
 	}
 
 }
