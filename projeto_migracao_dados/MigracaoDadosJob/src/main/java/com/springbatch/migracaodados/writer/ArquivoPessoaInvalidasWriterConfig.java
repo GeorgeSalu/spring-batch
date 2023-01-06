@@ -9,7 +9,7 @@ import org.springframework.core.io.FileSystemResource;
 import com.springbatch.migracaodados.dominio.Pessoa;
 
 @Configuration
-public class ArquivoPpessoaInvalidasWriterConfig {
+public class ArquivoPessoaInvalidasWriterConfig {
 
 	@Bean
 	public FlatFileItemWriter<Pessoa> arquivoPessoasInvalidasWriter() {
