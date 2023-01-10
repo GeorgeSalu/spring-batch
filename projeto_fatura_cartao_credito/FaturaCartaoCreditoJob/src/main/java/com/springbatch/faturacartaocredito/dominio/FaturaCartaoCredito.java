@@ -32,4 +32,10 @@ public class FaturaCartaoCredito {
 		this.transacoes = transacoes;
 	}
 
+	@Override
+	public String toString() {
+		return "FaturaCartaoCredito [cliente=" + cliente + ", cartaoCredito=" + cartaoCredito + ", transacoes="
+				+ transacoes + "]";
+	}
+
 }

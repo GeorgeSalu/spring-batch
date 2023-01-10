@@ -20,4 +20,9 @@ public class CartaoCredito {
 		this.cliente = cliente;
 	}
 
+	@Override
+	public String toString() {
+		return "CartaoCredito [numeroCartaoCredito=" + numeroCartaoCredito + ", cliente=" + cliente + "]";
+	}
+
 }
