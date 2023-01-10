@@ -20,4 +20,9 @@ public class InteresseProdutoCliente {
 		this.produto = produto;
 	}
 
+	@Override
+	public String toString() {
+		return "InteresseProdutoCliente [cliente=" + cliente + ", produto=" + produto + "]";
+	}
+
 }
