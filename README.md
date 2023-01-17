@@ -6,3 +6,8 @@ processamento de grande volume de dados, incluindo log e monitoramento, controle
 inválidos e gerenciamento de recursos. Também provê serviços mais avançados que permitem alta performance de jobs através de otimizações e 
 técnicas de particionamento. Jobs com um grande volume de dados se beneficiam com o uso do framework que os torna altamente escaláveis para 
 processar um volume significativo de informação em tempo hábil.
+
+Bibliografia
+
+ - Documentação oficial do Spring Batch
+ - Livro: Michael T. Minella, 2020, The Definitive Guide to Spring Batch
