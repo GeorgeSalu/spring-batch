@@ -7,6 +7,10 @@ inválidos e gerenciamento de recursos. Também provê serviços mais avançados
 técnicas de particionamento. Jobs com um grande volume de dados se beneficiam com o uso do framework que os torna altamente escaláveis para 
 processar um volume significativo de informação em tempo hábil.
 
+Softwares
+ - Spring boot
+ - Spring batch
+
 Bibliografia
 
  - Documentação oficial do Spring Batch
