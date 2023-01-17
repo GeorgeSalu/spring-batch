@@ -10,6 +10,7 @@ processar um volume significativo de informação em tempo hábil.
 Softwares
  - Spring boot
  - Spring batch
+ - Mysql 8
 
 Bibliografia
 
