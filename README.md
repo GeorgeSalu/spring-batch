@@ -8,8 +8,8 @@ técnicas de particionamento. Jobs com um grande volume de dados se beneficiam c
 processar um volume significativo de informação em tempo hábil.
 
 Softwares
- - Spring boot
- - Spring batch
+ - Spring boot 2.3
+ - Spring batch 4
  - Mysql 8
 
 Bibliografia
