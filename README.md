@@ -1,6 +1,6 @@
 ## Spring batch 4
 
-	Spring Batch - Um framework leve e completo projetado para permitir o desenvolvimento de aplicações robustas de processamento de dados em 
+Spring Batch - Um framework leve e completo projetado para permitir o desenvolvimento de aplicações robustas de processamento de dados em 
 lote (jobs) que são vitais para as operações diárias de sistemas corporativos. Spring Batch provê funções reusáveis que são essenciais ao 
 processamento de grande volume de dados, incluindo log e monitoramento, controle transacional, estatísticas, reinicialização, skip de dados 
 inválidos e gerenciamento de recursos. Também provê serviços mais avançados que permitem alta performance de jobs através de otimizações e 
